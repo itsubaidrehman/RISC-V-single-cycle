@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/16/2023 10:07:21 AM
+// Create Date: 04/17/2023 08:37:30 PM
 // Design Name: 
-// Module Name: instr_mem
+// Module Name: mux
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,11 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module instr_mem(
-input wire rst,
-input wire [31:0] A,
-output [31:0] RD
+module mux(
+input wire [31:0] a, b,
+input wire sel,
+output [31:0] mux_out
     );
-    reg [31:0] instr_mem_reg [1023:0];
-    assign RD = (~rst) ? {32{1'b0}} : instr_mem_reg[A[31:0]];  // not instr_mem_reg[A] ??
+    
+    assign mux_out = (sel) ? b : a;
 endmodule
