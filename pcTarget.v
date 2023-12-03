@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/16/2023 10:09:48 AM
+// Create Date: 12/03/2023 12:46:21 AM
 // Design Name: 
-// Module Name: program_counter
+// Module Name: pcTarget
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,19 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module program_counter(
-input wire clk, rst,
-input [31:0] PC_Next,
-output reg [31:0] PC
-    );
-    //reg [31:0] pc_register;
-    always @(posedge clk)
-        begin
-            if (!rst)
-            PC <= 0;
-            else
-            PC <= PC_Next;
-        end
-    
-    
+module pcTarget (
+  input wire [31:0] PC, immExt,
+  output reg [31:0] pcTarget
+);
+  
+  always @(*)
+    begin
+      pcTarget =  PC + immExt;
+    end
 endmodule

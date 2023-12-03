@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/16/2023 10:15:06 AM
+// Create Date: 12/03/2023 12:43:03 AM
 // Design Name: 
-// Module Name: reg_file
+// Module Name: regFile
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -18,15 +18,15 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
-
-module reg_file(
-input wire clk, we3, rst,
-input wire [4:0] A1, A2, A3,
-input wire [31:0] WD3,
-output [31:0] RD1, RD2
+module regFile(
+    input wire clk, we3, rst,
+    input wire [4:0] A1, A2, A3,
+    input wire [31:0] WD3,
+    output [31:0] RD1, RD2
     );
+  
     reg [31:0] registers [31:0];
+  
     assign RD1 = (~rst) ? 32'h00000000 : registers[A1];
     assign RD2 = (~rst) ? 32'h00000000 : registers[A2];
     
@@ -37,4 +37,12 @@ output [31:0] RD1, RD2
             registers[A3] = WD3;
             end
         end
+  
+  initial begin
+        registers[5] = 32'h00000005;
+        registers[6] = 32'h00000004;
+        registers[9] = 32'h00000020;
+        
+    end
+
 endmodule

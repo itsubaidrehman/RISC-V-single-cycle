@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/16/2023 10:12:15 PM
+// Create Date: 12/03/2023 12:42:10 AM
 // Design Name: 
-// Module Name: PC_Adder
+// Module Name: pcAdder
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -18,12 +18,11 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+module pcAdder (
+  input wire [31:0] PC,b, output wire [31:0] PCPlus4
+);
 
-module PC_Adder (a,b,c);
 
-    input [31:0]a,b;
-    output [31:0]c;
-
-    assign c = a + b;
+    assign PCPlus4 = PC + b;
     
 endmodule

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/15/2023 12:02:57 AM
+// Create Date: 12/03/2023 01:15:20 AM
 // Design Name: 
-// Module Name: alu
+// Module Name: alu1
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,38 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-//Gate level ALU
-//module alu
-//    #(parameter N = 32)
-//    (
-//    input wire [N-1:0] a, b,
-//    input wire [2:0] aluControl,
-//    output wire [N-1:0] result,
-//    output wire z, c, v, n
-//    );
-//    wire [N-1 :0] andout, orout;
-//    assign andout = a & b;
-//    assign orout = a | b;
-    
-//    wire [N-1 :0] block1;
-//    assign block1 = aluControl[0] ? ~b : b;
-    
-//    wire [N-1 :0] sum; wire cout;
-//    assign {cout, sum} = a + block1 + aluControl[0];
-    
-//    assign result = (aluControl == 2'b00) ? sum : (aluControl == 2'b01) ? sum :
-//                    (aluControl == 2'b10) ? andout : orout;
-                    
-//    assign z = ~(& result);
-//    assign n = result[31] ? 1 : 0;
-//    assign c = ((~aluControl[1]) & cout);
-//    assign v =  (~(aluControl[1]) & (sum[31] ^ a[31]) & (aluControl[0] ^ a[31] ^ b[31])); 
-     
-
-//endmodule
-
-
-module alu(A,B,Result,ALUControl,OverFlow,Carry,Zero,Negative);
+module alu1(A,B,Result,ALUControl,OverFlow,Carry,Zero,Negative);
 
     input [31:0]A,B;
     input [2:0]ALUControl;
@@ -76,5 +45,4 @@ module alu(A,B,Result,ALUControl,OverFlow,Carry,Zero,Negative);
     assign Negative = Result[31];
 
 endmodule
-
 

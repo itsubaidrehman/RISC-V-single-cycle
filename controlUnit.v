@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/16/2023 08:43:57 PM
+// Create Date: 12/03/2023 12:51:51 AM
 // Design Name: 
-// Module Name: controlUnitTop
+// Module Name: controlUnit
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,15 +20,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module controlUnitTop(
-input wire [1:0] aluOp,
-input wire [6:0] op, funct7,
-input wire [2:0] funct3,
-output reg [2:0] aluControl,
-input wire zero,
-//input wire [6:0] op,
-output reg regWrite, aluSrc, memWrite, resultSrc, branch, 
-output reg [1:0] immSrc//, aluOp
+
+//`include "ALU_Decoder.v"
+//`include "Main_Decoder.v"
+
+
+
+
+module controlUnit(
+    input wire [1:0] aluOp,
+    input wire [6:0] op, funct7,
+    input wire [2:0] funct3,
+    output [2:0] aluControl,
+    input wire zero,
+    //input wire [6:0] op,
+    output regWrite, aluSrc, memWrite, resultSrc, branch, 
+    output [1:0] immSrc//, aluOp
     );
     
     alu_decoder alu_decoder (

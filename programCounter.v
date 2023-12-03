@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/16/2023 08:29:17 PM
+// Create Date: 12/03/2023 12:38:17 AM
 // Design Name: 
-// Module Name: sign_extended
+// Module Name: programCounter
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,12 +19,19 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module sign_extended(
-input wire [31:0] in,
-input wire immSrc,
-output wire [31:0] immExt
+module programCounter(
+    input wire clk, rst,
+    input [31:0] PC_Next,
+    output reg [31:0] PC
     );
-    assign immExt = (immSrc == 1'b1) ? ({{20{in[31]}},in[31:25],in[11:7]}):
-                                            {{20{in[31]}},in[31:20]};
+    //reg [31:0] pc_register;
+    always @(posedge clk)
+        begin
+            if (!rst)
+            PC <= 0;
+            else
+            PC <= PC_Next;
+        end
+    
+    
 endmodule
