@@ -23,7 +23,8 @@
 module main_decoder(
     input wire zero,
     input wire [6:0] op,
-    output reg regWrite, aluSrc, memWrite, resultSrc, branch, 
+    output reg regWrite, aluSrc, memWrite, resultSrc, branch,
+    output pcSrc,
     output reg [1:0] immSrc, aluOp
     );
     always @(*)
@@ -59,6 +60,6 @@ module main_decoder(
         
         end
     
-    wire pcSrc;
+    //wire pcSrc;
     assign pcSrc = zero & branch;
 endmodule

@@ -22,11 +22,11 @@
 
 module pcTarget (
   input wire [31:0] PC, immExt,
-  output reg [31:0] pcTarget
+  output reg [31:0] PCTarget
 );
   
   always @(*)
     begin
-      pcTarget =  PC + immExt;
+      PCTarget =  PC + immExt;
     end
 endmodule

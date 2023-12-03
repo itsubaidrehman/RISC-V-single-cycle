@@ -19,11 +19,11 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module alu1(A,B,Result,ALUControl,OverFlow,Carry,Zero,Negative);
+module alu1(A,B,Result,ALUControl,OverFlow,Carry,zero,Negative);
 
     input [31:0]A,B;
     input [2:0]ALUControl;
-    output Carry,OverFlow,Zero,Negative;
+    output Carry,OverFlow,zero,Negative;
     output [31:0]Result;
 
     wire Cout;
@@ -41,7 +41,7 @@ module alu1(A,B,Result,ALUControl,OverFlow,Carry,Zero,Negative);
                       (~(ALUControl[0] ^ B[31] ^ A[31])) &
                       (~ALUControl[1]));
     assign Carry = ((~ALUControl[1]) & Cout);
-    assign Zero = &(~Result);
+    assign zero = &(~Result);
     assign Negative = Result[31];
 
 endmodule

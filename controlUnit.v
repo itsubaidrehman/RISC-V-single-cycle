@@ -34,7 +34,7 @@ module controlUnit(
     output [2:0] aluControl,
     input wire zero,
     //input wire [6:0] op,
-    output regWrite, aluSrc, memWrite, resultSrc, branch, 
+    output regWrite, aluSrc, memWrite, resultSrc, branch, pcSrc,
     output [1:0] immSrc//, aluOp
     );
     
@@ -44,6 +44,6 @@ module controlUnit(
     
     main_decoder main_decoder (
         .zero(zero), .op(op), .regWrite(regWrite), .aluSrc(aluSrc), .memWrite(memWrite), .resultSrc(resultSrc), .branch(branch),
-        .immSrc(immSrc), .aluOp(aluOp)
+        .immSrc(immSrc), .aluOp(aluOp), .pcSrc(pcSrc)
     );
 endmodule

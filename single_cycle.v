@@ -31,12 +31,12 @@
 module single_cycle (input clk, rst);
   
   wire [31:0] PC_Next, PC, PCPlus4, instr, immExt, srcA, srcB, aluResult, readData;
-  wire [31:0] writeData, result;
+  wire [31:0] writeData, result, PCTarget;
   wire [1:0] aluOp;    
   wire [6:0] op, funct7;       
   wire [2:0] funct3;
   wire [2:0] aluControl;     
-  wire zero;
+  wire zero, pcSrc;
   //input wire [6:0] op,
   wire regWrite, aluSrc, memWrite, resultSrc, branch; 
   wire [1:0] immSrc;//, aluOp
@@ -45,16 +45,17 @@ module single_cycle (input clk, rst);
   controlUnit cu (
     //.aluOp(),
     .op(instr[6:0]), 
-    .funct7(),       //instr[6:0]
+    .funct7(instr[6:0]),       //instr[6:0]
     .funct3(instr[14:12]),
     .aluControl(aluControl),
-    //.zero(),
+    .zero(zero),
     //input wire [6:0] op,
     .regWrite(regWrite),    //regWrite
     .aluSrc(aluSrc),      //aluSrc
     .memWrite(memWrite),     //memWrite
     .resultSrc(resultSrc),       //resultSrc
-    .branch(), 
+    .branch(branch),
+    .pcSrc(pcSrc), 
     .immSrc(immSrc)//, aluOp   immSrc
   );
   
@@ -104,7 +105,7 @@ module single_cycle (input clk, rst);
     .ALUControl(aluControl),
     .OverFlow(),
     .Carry(),
-    .Zero(),
+    .zero(zero),
     .Negative()
   );
   
@@ -131,6 +132,20 @@ module single_cycle (input clk, rst);
   .b(readData),
   .sel(resultSrc),
   .out(result)
+  );
+  
+  
+  pcTarget pcTarget (
+  .PC(PC),
+  .immExt(immExt),
+  .PCTarget(PCTarget)
+  );
+  
+  mux muxBeforePC (
+  .a(PCPlus4),
+  .b(PCTarget),
+  .sel(pcSrc),
+  .out(PC_Next)
   );
   
 endmodule
