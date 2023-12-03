@@ -44,6 +44,7 @@ module dataMem(
         //0062E3B3
         //0062F433
         data_register[28] <= 10;
+        data_register[11] <= 32'h00000008;
 //        instr_mem_reg[1] <=  32'h0062E3B3;
 //        instr_mem_reg[2] <= 32'h0062F433;
         end
