@@ -42,8 +42,11 @@ module instrMem(
     //0062E3B3
     //0062F433
     instr_mem_reg[0] <= 32'hFFC4A303;
-    instr_mem_reg[1] <=  32'h0062E3B3;
-    instr_mem_reg[2] <= 32'h0062F433;
+    //instr_mem_reg[1] <=  32'h0062E3B3;
+    //instr_mem_reg[2] <= 32'h0062F433;
+    instr_mem_reg[1] <= 32'h0064A423;
+    instr_mem_reg[1] <= 32'h0062E233;
+    
     end
 endmodule
 

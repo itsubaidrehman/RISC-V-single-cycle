@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/17/2023 08:37:30 PM
+// Create Date: 12/04/2023 01:08:51 AM
 // Design Name: 
 // Module Name: mux
 // Project Name: 
@@ -21,10 +21,13 @@
 
 
 module mux(
-input wire [31:0] a, b,
-input wire sel,
-output [31:0] mux_out
+input wire [31:0] a, b, input wire sel,
+output reg [31:0] out
+
     );
     
-    assign mux_out = (sel) ? b : a;
+    always @(*) 
+    begin
+    out <= (sel) ? b : a;
+    end
 endmodule

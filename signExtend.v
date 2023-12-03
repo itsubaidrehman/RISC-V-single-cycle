@@ -27,9 +27,9 @@ module signExtend(
   
     //assign immExt = (immSrc == 1'b1) ? ({{20{in[31]}},in[31:25],in[11:7]}):
                                             //{{20{in[31]}},in[31:20]};
-//  assign immExt = (immSrc == 1'b1) ? ({{20{instr[31]}},instr[31:25],instr[11:7]}):
-//                                      {{20{instr[31]}},instr[31:20]};
+  assign immExt = (immSrc == 1'b1) ? ({{20{instr[31]}},instr[31:25],instr[11:7]}):
+                                      {{20{instr[31]}},instr[31:20]};
 
-assign immExt = (instr[31]) ? ({{20{1'b1}},instr[31:20]}):
-                                     {{{20{1'b0}},instr[31:20]}};
+//assign immExt = (instr[31]) ? ({{20{1'b1}},instr[31:20]}):
+//                                     {{{20{1'b0}},instr[31:20]}};
 endmodule
